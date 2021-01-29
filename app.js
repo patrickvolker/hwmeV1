@@ -361,9 +361,9 @@ function shuffle(horse, weed, mind) {
   card1.innerHTML = draw[0];
   card2.innerHTML = draw[1];
   card3.innerHTML = draw[2];
-  card1back.innerHTML = horseChoices[horse];
-  card2back.innerHTML = weedChoices[weed];
-  card3back.innerHTML = mindChoices[mind];
+  card1back.innerHTML = draw[0];
+  card2back.innerHTML = draw[1];
+  card3back.innerHTML = draw[2];
   if (draw[0] == horseChoices[horse]) {
     card1logo.innerHTML = horseLogo;
   } else if (draw[0] == weedChoices[weed]) {
