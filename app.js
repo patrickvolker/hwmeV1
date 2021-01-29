@@ -4,14 +4,26 @@ const mindCard = document.getElementById('mindCard');
 const horseCardback = document.getElementById('horseCardback');
 const weedCardback = document.getElementById('weedCardback');
 const mindCardback = document.getElementById('mindCardback');
+const horseNug = document.getElementById('horseNug');
+const weedNug = document.getElementById('weedNug');
+const mindNug = document.getElementById('mindNug');
 const card1 = document.getElementById('card1');
 const card2 = document.getElementById('card2');
 const card3 = document.getElementById('card3');
+const card1back = document.getElementById('card1back');
+const card2back = document.getElementById('card2back');
+const card3back = document.getElementById('card3back');
+const horseLogo = `<i class = "fas fa-horse fa-9x"></i>`;
+const weedLogo = `<i class="fas fa-cannabis fa-9x"></i>`;
+const mindLogo = `<i class="far fa-eye fa-9x"></i>`;
+
 const button = document.getElementById('button');
 
-let display = [card1, card2, card3];
-
-let displayShuffle = String(Math.floor(Math.random() * display.length));
+// displayShuffle = function () {
+//   let display = [card1, card2, card3];
+//   let shuffle = String(Math.floor(Math.random() * display.length));
+//   console.log(shuffle);
+// };
 
 let horseChoices = [
   "Admiral's Voyage",
@@ -116,7 +128,7 @@ let horseChoices = [
   'Wild Rush',
 ];
 
-let horseShuffle = String(Math.floor(Math.random() * horseChoices.length));
+let horse = String(Math.floor(Math.random() * horseChoices.length));
 
 let weedChoices = [
   'Accidental Tourist',
@@ -221,7 +233,7 @@ let weedChoices = [
   'Yumboldt',
 ];
 
-let weedShuffle = String(Math.floor(Math.random() * weedChoices.length));
+let weed = String(Math.floor(Math.random() * weedChoices.length));
 
 let mindChoices = [
   'Accho',
@@ -326,15 +338,10 @@ let mindChoices = [
   'Police Brutality',
 ];
 
-let mindShuffle = String(Math.floor(Math.random() * mindChoices.length));
+let mind = String(Math.floor(Math.random() * mindChoices.length));
+let draw = [horseChoices[horse], weedChoices[weed], mindChoices[mind]];
 
-let draw = [
-  horseChoices[horseShuffle],
-  weedChoices[weedShuffle],
-  mindChoices[mindShuffle],
-];
-
-function shuffle(draw) {
+function shuffle(horse, weed, mind) {
   var ctr = draw.length,
     temp,
     index;
@@ -350,12 +357,35 @@ function shuffle(draw) {
     draw[ctr] = draw[index];
     draw[index] = temp;
   }
-  horseCard.innerHTML = horseChoices[horseShuffle];
-  weedCard.innerHTML = weedChoices[weedShuffle];
-  mindCard.innerHTML = mindChoices[mindShuffle];
-  horseCardback.innerHTML = horseChoices[horseShuffle];
-  weedCardback.innerHTML = weedChoices[weedShuffle];
-  mindCardback.innerHTML = mindChoices[mindShuffle];
+
+  card1.innerHTML = draw[0];
+  card2.innerHTML = draw[1];
+  card3.innerHTML = draw[2];
+  card1back.innerHTML = horseChoices[horse];
+  card2back.innerHTML = weedChoices[weed];
+  card3back.innerHTML = mindChoices[mind];
+  if (draw[0] == horseChoices[horse]) {
+    card1logo.innerHTML = horseLogo;
+  } else if (draw[0] == weedChoices[weed]) {
+    card1logo.innerHTML = weedLogo;
+  } else {
+    card1logo.innerHTML = mindLogo;
+  }
+  if (draw[1] == horseChoices[horse]) {
+    card2logo.innerHTML = horseLogo;
+  } else if (draw[1] == weedChoices[weed]) {
+    card2logo.innerHTML = weedLogo;
+  } else {
+    card2logo.innerHTML = mindLogo;
+  }
+  if (draw[2] == horseChoices[horse]) {
+    card3logo.innerHTML = horseLogo;
+  } else if (draw[2] == weedChoices[weed]) {
+    card3logo.innerHTML = weedLogo;
+  } else {
+    card3logo.innerHTML = mindLogo;
+  }
+  console.log(draw);
   return draw;
 }
-shuffle(draw);
+shuffle(horse, weed, mind);
